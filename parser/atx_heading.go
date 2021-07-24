@@ -196,7 +196,7 @@ func generateAutoHeadingID(node *ast.Heading, reader text.Reader, pc Context) {
 		lastLine := node.Lines().At(lastIndex)
 		line = lastLine.Value(reader.Source())
 	}
-	headingID := pc.IDs().Generate(line, ast.KindHeading)
+	headingID := pc.IDs().Generate(line, ast.KindHeading, node.Level)
 	node.SetAttribute(attrNameID, headingID)
 }
 

@@ -56,7 +56,7 @@ func (r *reference) String() string {
 // An IDs interface is a collection of the element ids.
 type IDs interface {
 	// Generate generates a new element id.
-	Generate(value []byte, kind ast.NodeKind) []byte
+	Generate(value []byte, kind ast.NodeKind, leve int) []byte
 
 	// Put puts a given element id to the used ids table.
 	Put(value []byte)
@@ -72,7 +72,7 @@ func newIDs() IDs {
 	}
 }
 
-func (s *ids) Generate(value []byte, kind ast.NodeKind) []byte {
+func (s *ids) Generate(value []byte, kind ast.NodeKind, level int) []byte {
 	value = util.TrimLeftSpace(value)
 	value = util.TrimRightSpace(value)
 	result := []byte{}
